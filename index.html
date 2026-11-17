@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de Gestão de Solicitações Comunitárias">
+  <title>Sistema de Gestão Comunitária</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">🏘️</div>
+      <h2>Gestão<br>Comunitária</h2>
+      <small>Unidos pelo Bairro</small>
+    </div>
+
+    <nav aria-label="Menu principal">
+      <button class="nav-item active" data-page="inicio">⌂ Início</button>
+      <button class="nav-item" data-page="moradores">♙ Cadastrar Morador</button>
+      <button class="nav-item" data-page="cadastro">＋ Nova Solicitação</button>
+      <button class="nav-item" data-page="consultas">☷ Consultar Solicitações</button>
+      <button class="nav-item" data-page="relatorios">▥ Relatórios</button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Comunidade mais organizada, um bairro melhor para todos!</p>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <strong>Associação Comunitária Unidos pelo Bairro</strong>
+        <small>Sistema de Gestão de Solicitações Comunitárias</small>
+      </div>
+      <div class="user">🔔 &nbsp; 👤 Administrador</div>
+    </header>
+
+    <!-- TELA 1: INÍCIO -->
+    <section id="inicio" class="page active">
+      <h1>Olá, Administrador!</h1>
+      <p class="subtitle">
+        Bem-vindo ao Sistema de Gestão de Solicitações Comunitárias.
+      </p>
+      <p class="description">
+        Registre, acompanhe e gerencie as solicitações dos moradores,
+        contribuindo para uma comunidade mais organizada.
+      </p>
+
+      <div class="stats">
+        <div class="stat blue">
+          <span>📄</span>
+          <h2 id="abertas">0</h2>
+          <p>Solicitações Abertas</p>
+        </div>
+        <div class="stat orange">
+          <span>🕒</span>
+          <h2 id="andamento">0</h2>
+          <p>Em Andamento</p>
+        </div>
+        <div class="stat green">
+          <span>✓</span>
+          <h2 id="concluidas">0</h2>
+          <p>Concluídas</p>
+        </div>
+        <div class="stat red">
+          <span>✕</span>
+          <h2 id="canceladas">0</h2>
+          <p>Canceladas</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Acesso rápido</h2>
+
+      <div class="actions">
+        <button class="action-card" data-page="moradores">
+          <span>👥</span>
+          <h3>Cadastrar Morador</h3>
+          <p>Registre os dados dos moradores.</p>
+        </button>
+
+        <button class="action-card" data-page="cadastro">
+          <span>📝</span>
+          <h3>Nova Solicitação</h3>
+          <p>Registre uma nova demanda.</p>
+        </button>
+
+        <button class="action-card" data-page="consultas">
+          <span>🔎</span>
+          <h3>Consultar Solicitações</h3>
+          <p>Pesquise e acompanhe as demandas.</p>
+        </button>
+
+        <button class="action-card" data-page="relatorios">
+          <span>📊</span>
+          <h3>Relatórios</h3>
+          <p>Visualize os resultados da associação.</p>
+        </button>
+      </div>
+
+      <div class="banner">
+        <h2>Juntos por um bairro melhor!</h2>
+        <p>A sua participação fortalece nossa comunidade.</p>
+      </div>
+
+      <div class="notice">
+        <strong>📢 Aviso</strong>
+        <p>Mantenha os cadastros atualizados para garantir um atendimento mais eficiente.</p>
+      </div>
+    </section>
+
+    <!-- CADASTRO DE MORADORES -->
+    <section id="moradores" class="page">
+      <h1>Cadastrar Morador</h1>
+      <p class="subtitle">Registre os moradores da comunidade.</p>
+
+      <form id="formMorador" class="form-card">
+        <label for="nomeMorador">Nome completo *</label>
+        <input id="nomeMorador" required maxlength="100"
+          placeholder="Digite o nome do morador">
+
+        <label for="contatoMorador">Contato (opcional)</label>
+        <input id="contatoMorador" maxlength="30"
+          placeholder="Contato fictício ou autorizado">
+
+        <label for="referenciaMorador">Referência comunitária</label>
+        <input id="referenciaMorador" maxlength="100"
+          placeholder="Ex.: Rua das Flores">
+
+        <button type="submit" class="primary">Cadastrar Morador</button>
+        <p id="mensagemMorador" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- NOVA SOLICITAÇÃO -->
+    <section id="cadastro" class="page">
+      <h1>Nova Solicitação</h1>
+      <p class="subtitle">Registre uma nova demanda comunitária.</p>
+
+      <form id="formSolicitacao" class="form-card">
+
+        <label for="moradorSolicitacao">Morador *</label>
+        <select id="moradorSolicitacao" required>
+          <option value="">Selecione um morador</option>
+        </select>
+
+        <label for="tipoSolicitacao">Tipo de solicitação *</label>
+        <select id="tipoSolicitacao" required>
+          <option value="">Selecione</option>
+          <option>Iluminação pública</option>
+          <option>Limpeza urbana</option>
+          <option>Infraestrutura</option>
+          <option>Saneamento</option>
+          <option>Segurança</option>
+          <option>Outros</option>
+        </select>
+
+        <label for="descricaoSolicitacao">Descrição da solicitação *</label>
+        <textarea id="descricaoSolicitacao" rows="4"
+          maxlength="1000" required
+          placeholder="Descreva o problema identificado"></textarea>
+
+        <label for="dataSolicitacao">Data *</label>
+        <input id="dataSolicitacao" type="date" required>
+
+        <button type="submit" class="primary">Registrar Solicitação</button>
+        <p id="mensagemSolicitacao" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- CONSULTAS -->
+    <section id="consultas" class="page">
+      <h1>Consultar Solicitações</h1>
+      <p class="subtitle">Pesquise e acompanhe as demandas cadastradas.</p>
+
+      <div class="filters">
+        <input id="pesquisa" placeholder="Pesquisar por morador ou descrição">
+        <select id="filtroStatus">
+          <option value="">Todos os status</option>
+          <option>Aberta</option>
+          <option>Em andamento</option>
+          <option>Concluída</option>
+          <option>Cancelada</option>
+        </select>
+      </div>
+
+      <div id="listaSolicitacoes" class="request-list"></div>
+    </section>
+
+    <!-- RELATÓRIOS -->
+    <section id="relatorios" class="page">
+      <h1>Relatórios</h1>
+      <p class="subtitle">Resumo das demandas da comunidade.</p>
+
+      <div class="form-card">
+        <h2>Resumo geral</h2>
+        <div id="resumoRelatorio"></div>
+        <button class="primary" id="exportarCSV">
+          Exportar relatório CSV
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      Sistema de Gestão de Solicitações Comunitárias | v1.0
+      <br>Associação Comunitária Unidos pelo Bairro
+    </footer>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
